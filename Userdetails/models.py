@@ -6,7 +6,7 @@ from django.db import models
 class User(models.Model):
     user_id = models.AutoField(primary_key=True, editable=False)
     user_name = models.CharField(max_length=20, null=False)
-    phone_number = models.IntegerField(max_length=10)
+    phone_number = models.IntegerField()
     city = models.CharField(max_length=20)
     age = models.IntegerField()
 
@@ -31,3 +31,6 @@ class OrderItem(models.Model):
     item_name = models.CharField(max_length=20)
     quantity = models.IntegerField()
     price = models.IntegerField()
+
+    def __str__(self):
+        return "%s %s %s %s %s" % (self.orderItem_id, self.order_id, self.item_name, self.quantity, self.price)
